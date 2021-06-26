@@ -17,9 +17,17 @@ mat-card {
   scrollbar-width: none;  /* Firefox */
 }
 
-.items.active {
+#wrapper.active {
   background: rgba(255,255,255,0.3);
   cursor: grabbing;
   cursor: -webkit-grabbing;
   transform: scale(1);
+}
+
+.description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

@@ -1,18 +1,11 @@
 <h1 class="text-center mt-2">Eventos históricos</h1>
-<div #wrapper id="wrapper" class="flex flex-initial flex-nowrap overflow-auto mt-5">
-  <!-- <span>
-    <mat-icon aria-hidden="false" aria-label="Example home icon">arrow_back_ios</mat-icon>
-  </span> -->
-    <mat-card *ngFor="let historicalEvent of historialEvents$">
-      <h1>{{ historicalEvent.title }}</h1>
-      <p>{{ historicalEvent.date }}</p>
-      <p>{{ historicalEvent.details }} </p>
-      <a mat-raised-button [href]="historicalEvent.links.article" target="_blank">
-        <mat-icon aria-hidden="false">menu_book</mat-icon> <span>Artigo</span>
+<div #wrapper id="wrapper" class="flex flex-initial flex-nowrap overflow-auto py-5">
+    <mat-card class="flex flex-col" *ngFor="let historicalEvent of historialEvents$">
+      <h1 class="text-center">{{ historicalEvent.title }}</h1>
+      <h3 class="text-center">{{ historicalEvent.event_date_utc | date: 'dd/MM/yyyy' }}</h3>
+      <p class="w-full description">{{ historicalEvent.details }} </p>
+      <a mat-raised-button class="w-4/12 mx-auto block hover:bg-blue-100 mt-auto" [href]="historicalEvent.links.article" target="_blank">
+        <mat-icon class="mr-2" aria-hidden="false">menu_book</mat-icon> <span>Artigo</span>
       </a>
     </mat-card>
-  <!-- <span>
-    <mat-icon aria-hidden="false" aria-label="Example home icon">arrow_back_ios</mat-icon>
-  </span> -->
-
 </div>
