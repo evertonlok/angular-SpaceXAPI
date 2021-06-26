@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Equipe técnica</h1>
+<div mat-dialog-content>
+  <mat-spinner class="m-auto" *ngIf="!crews$"></mat-spinner>
+  <div class="flex">
+    <mat-card *ngFor="let crew of crews$">
+      <mat-card-header>
+        <mat-card-title>{{ crew.name }}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image width="200px" [src]="crew.image">
+      <mat-card-content>
+        <h4>Agencia: {{ crew.agency }}</h4>
+      </mat-card-content>
+      <mat-card-actions>
+        <a mat-raised-button [href]="crew.wikipedia" target="_blank">
+          <mat-icon aria-hidden="false">menu_book</mat-icon> <span>Wikipedia</span>
+        </a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

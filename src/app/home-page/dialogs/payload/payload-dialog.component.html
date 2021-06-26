@@ -1,0 +1,21 @@
+<div class="mat-elevation-z4 p-5" *ngFor="let payload of payloads$">
+  <h2 class="text-center">{{ payload.name || 'Não informado'}}</h2>
+  <div class="flex">
+    <div>
+      <p>Clientes: {{ payload.customers.join(' ,') || 'Não informado' }}</p>
+      <p>Fabricantes: {{ payload.manufacturers.join(' ,') || 'Não informado' }}</p>
+      <p>Nacionalidades: {{ payload.nationalities.join(' ,') || 'Não informado' }}</p>
+      <p>Órbita: {{ payload.orbit || 'Não informado' }}</p>
+      <p>Tipo: {{ payload.type || 'Não informado' }}</p>
+      <p>Massa (KG): {{ payload.mass_kg || 'Não informado' }}</p>
+    </div>
+
+    <div>
+      <p>Massa (LBS): {{ payload.mass_lbs || 'Não informado' }}</p>
+      <p>Sistema de referência: {{ (payload.reference_system | uppercase) || 'Não informado' }}</p>
+      <p>Vida útil em anos: {{ payload.spanlife_years || 'Não informado' }}</p>
+      <p>Inclinação: {{ payload.inclination_deg || 'Não informado' }}</p>
+      <p>Reutilizado: {{ (payload.reused ? 'Sim' : 'Não') || 'Não informado' }}</p>
+    </div>
+  </div>
+</div>

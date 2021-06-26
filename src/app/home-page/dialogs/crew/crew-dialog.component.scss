@@ -1,0 +1,23 @@
+$cardMaxWidth: 300px;
+$cardMaxWidthMd: 100%;
+
+img, mat-card {
+  max-width: $cardMaxWidth;
+}
+
+a {
+  width: 100% !important;
+  word-wrap: break-word;
+  white-space: pre-wrap
+}
+
+mat-icon {
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+@media(max-width: 767px) {
+  img, mat-card {
+    max-width: $cardMaxWidthMd;
+  }
+}

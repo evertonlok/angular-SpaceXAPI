@@ -1,0 +1,25 @@
+mat-card {
+  flex-grow: 1;
+  flex-shrink: 0;
+  min-width: 500px;
+  max-width: 600px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+#wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+#wrapper {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.items.active {
+  background: rgba(255,255,255,0.3);
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+  transform: scale(1);
+}
