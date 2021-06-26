@@ -14,9 +14,8 @@ img {
 
 mat-card-content {
   display: grid;
-  grid-template-columns: 250px;
+  grid-template-columns: 250px 350px;
   grid-template-rows: 200px auto;
   grid-template-areas:
-    "rocket-image"
-    "rocket-description";
+    "rocket-image rocket-description"
 }

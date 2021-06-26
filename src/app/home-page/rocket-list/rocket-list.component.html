@@ -1,19 +1,33 @@
 <h1 class="text-center mt-5 mb-3">Foguetes</h1>
-<mat-form-field class="mx-auto" appearance="fill">
-  <mat-label>Nome</mat-label>
-  <input matInput [(ngModel)]="inputRocketName" (keyup.enter)="applyFilter()" placeholder="Pesquise pelo nome" value="">
-  <mat-icon class="cursor-pointer" matSuffix (click)="applyFilter()">search</mat-icon>
-</mat-form-field>
-<div class="flex gap-x-5 justify-center">
-  <mat-card class="mat-elevation-10 bg-gray-50" *ngFor="let rocket of rockets$">
-    <mat-card-header class="justify-center">
-      <mat-card-title class="text-center">{{ rocket.name }}</mat-card-title>
-      <mat-card-subtitle class="text-center">{{ rocket.company }}</mat-card-subtitle>
-    </mat-card-header>
+<form class="example-form">
+  <mat-form-field class="mx-auto w-2/12 block" appearance="fill">
+    <mat-label>Nome</mat-label>
+    <input type="text"
+           #input
+           placeholder="Pesquise..."
+           aria-label="Nome"
+           matInput
+           [formControl]="rocketControl"
+           [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option (onSelectionChange)="applyFilter(rocket)" *ngFor="let rocket of filteredRockets">
+        {{ rocket.name }}
+      </mat-option>
+      <mat-option *ngIf="!filteredRockets.length && input.value.length">
+        Nenhum resultado
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+
+<div *ngIf="rocket" class="flex gap-x-5 justify-center">
+  <mat-card class="mat-elevation-10 bg-gray-50 p-0">
     <mat-card-content>
       <img [src]="rocket.flickr_images[0]"  alt="Photo of a rocket">
-      <div class="rocket-description">
-        <p>Custo por lançamento: {{ rocket.cost_per_launch | currency }}</p>
+      <div class="rocket-description p-5">
+        <mat-card-title class="text-center">{{ rocket.name }}</mat-card-title>
+        <mat-card-subtitle class="text-center">{{ rocket.company }}</mat-card-subtitle>
+        <p class="text-center">Custo por lançamento: {{ rocket.cost_per_launch | currency }}</p>
         <p class="text-center">Cidade: {{ rocket.country }}</p>
       </div>
     </mat-card-content>

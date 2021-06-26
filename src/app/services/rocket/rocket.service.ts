@@ -17,4 +17,23 @@ export class RocketService {
   getAll (): Observable<any> {
     return this.http.get<any>(`${ BASE_URL_API }/rockets`)
   }
+
+  get (): Observable<any> {
+    return this.http.post<any>(`${ BASE_URL_API }/rockets/query`, {
+      options: {
+        limit: 1
+      }
+    })
+  }
+
+  getByName (query: string) {
+    return this.http.post<any>(`${ BASE_URL_API }/rockets/query`, {
+      query: {
+        name: {
+          $regex: query,
+          $options: 'i'
+        }
+      }
+    })
+  }
 }
