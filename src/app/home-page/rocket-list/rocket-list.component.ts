@@ -13,6 +13,7 @@ export class RocketListComponent implements OnInit {
   public isLoadingResult = true
   public rocketControl = new FormControl()
   public filteredRockets: any[] = []
+  private defaultfilteredRocks: any[]
   public rocket: any
   constructor (
     private rocketService: RocketService
@@ -20,16 +21,18 @@ export class RocketListComponent implements OnInit {
 
   ngOnInit (): void {
     this.rocketService.get().subscribe((rockets) => {
-      this.rocket = rockets.docs.pop()
+      this.filteredRockets = this.defaultfilteredRocks = rockets.docs
+      this.rocket = rockets.docs.slice().shift()
       this.isLoadingResult = false
     })
 
     this.rocketControl.valueChanges.pipe(debounceTime(240)).subscribe(value => {
-      value && this.rocketService.getByName(value).subscribe(response => {
-        if(!response.docs.length)
-          this.noResultsFound = true
-        this.filteredRockets = response.docs
-      })
+      if(!value)
+        this.filteredRockets = this.defaultfilteredRocks
+      else
+        this.rocketService.getByName(value).subscribe(response => {
+          this.filteredRockets = response.docs
+        })
     })
   }
 

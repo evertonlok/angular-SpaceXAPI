@@ -13,7 +13,7 @@
       <mat-option (onSelectionChange)="applyFilter(rocket)" *ngFor="let rocket of filteredRockets">
         {{ rocket.name }}
       </mat-option>
-      <mat-option *ngIf="!noResultsFound">
+      <mat-option *ngIf="!filteredRockets.length">
         Nenhum resultado
       </mat-option>
     </mat-autocomplete>

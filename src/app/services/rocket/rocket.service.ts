@@ -21,7 +21,7 @@ export class RocketService {
   get (): Observable<any> {
     return this.http.post<any>(`${ BASE_URL_API }/rockets/query`, {
       options: {
-        limit: 1
+        limit: 5
       }
     })
   }
