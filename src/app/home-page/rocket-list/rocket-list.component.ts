@@ -9,6 +9,8 @@ import { RocketService } from 'src/app/services/rocket/rocket.service'
   styleUrls: ['./rocket-list.component.scss']
 })
 export class RocketListComponent implements OnInit {
+  public noResultsFound = false
+  public isLoadingResult = true
   public rocketControl = new FormControl()
   public filteredRockets: any[] = []
   public rocket: any
@@ -19,10 +21,13 @@ export class RocketListComponent implements OnInit {
   ngOnInit (): void {
     this.rocketService.get().subscribe((rockets) => {
       this.rocket = rockets.docs.pop()
+      this.isLoadingResult = false
     })
 
     this.rocketControl.valueChanges.pipe(debounceTime(240)).subscribe(value => {
       value && this.rocketService.getByName(value).subscribe(response => {
+        if(!response.docs.length)
+          this.noResultsFound = true
         this.filteredRockets = response.docs
       })
     })

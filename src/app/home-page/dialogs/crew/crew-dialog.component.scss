@@ -1,7 +1,15 @@
+@import '../../../../variables.scss';
+
 a {
   width: 100% !important;
   word-wrap: break-word;
   white-space: pre-wrap
+}
+
+img {
+  height: 250px;
+  object-fit: cover;
+  object-position: top;
 }
 
 mat-icon {
@@ -12,6 +20,12 @@ mat-icon {
 
 .wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: auto;
+}
+
+@media (min-width: $sm) {
+  .wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
 }
