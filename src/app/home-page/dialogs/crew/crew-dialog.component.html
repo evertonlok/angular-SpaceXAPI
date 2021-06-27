@@ -1,8 +1,8 @@
 <h1 class="text-center m-0" mat-dialog-title>Equipe técnica</h1>
 <div class="py-5" mat-dialog-content>
-  <mat-spinner class="m-auto" *ngIf="!crews$"></mat-spinner>
+  <mat-spinner class="m-auto" *ngIf="!crews"></mat-spinner>
   <div class="wrapper gap-5">
-    <mat-card *ngFor="let crew of crews$">
+    <mat-card *ngFor="let crew of crews">
       <mat-card-header class="justify-center">
         <mat-card-title>{{ crew.name }}</mat-card-title>
       </mat-card-header>

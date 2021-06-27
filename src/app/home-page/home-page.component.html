@@ -9,7 +9,7 @@
       <input matInput (keyup)="applyFilter($event)" #input>
     </mat-form-field>
 
-    <mat-button-toggle-group class="self-center h-12 mr-2" [(ngModel)]="launchType" (change)="updateTable($event)">
+    <mat-button-toggle-group class="self-center h-12 mr-2" [(ngModel)]="launchType" (change)="updateTable()">
       <mat-button-toggle value="past">Passados</mat-button-toggle>
       <mat-button-toggle value="future">Futuros</mat-button-toggle>
     </mat-button-toggle-group>

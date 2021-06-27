@@ -1,6 +1,6 @@
 <h1 class="text-center mt-4">Eventos históricos</h1>
 <div #wrapper id="wrapper" class="flex flex-initial flex-nowrap overflow-auto py-5 w-full">
-    <mat-card class="flex flex-col" *ngFor="let historicalEvent of historialEvents$">
+    <mat-card class="flex flex-col" *ngFor="let historicalEvent of historialEvents">
       <h1 class="text-center">{{ historicalEvent.title }}</h1>
       <h3 class="text-center">{{ historicalEvent.event_date_utc | date: 'dd/MM/yyyy' }}</h3>
       <p class="w-full description text-base tracking-wide">{{ historicalEvent.details }} </p>

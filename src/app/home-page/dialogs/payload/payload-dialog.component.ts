@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core'
 import { MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { Payload } from 'src/app/models/payload'
 
 import { PayloadService } from 'src/app/services/payload/payload.service'
 
@@ -10,16 +11,15 @@ import { PayloadService } from 'src/app/services/payload/payload.service'
 })
 export class PayloadDialogComponent implements OnInit {
 
-  public payloads$: any
+  public payloads: Payload[]
   constructor (
     @Inject(MAT_DIALOG_DATA) public data: { ids: string[] },
     private payloadService: PayloadService
   ) { }
 
   ngOnInit (): void {
-    this.payloadService.findByIds(this.data.ids).subscribe(({ docs: payloads }) => {
-      console.log('payloasds', payloads)
-      this.payloads$ = payloads
+    this.payloadService.findByIds(this.data.ids).subscribe((payloads: Payload[]) => {
+      this.payloads = payloads
     })
   }
 

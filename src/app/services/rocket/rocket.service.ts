@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { BASE_URL_API } from 'src/app/constants'
-import { Rocket } from 'src/app/models/rocket'
+import { Rocket, RocketProjection } from 'src/app/models/rocket'
+import { map } from 'rxjs/operators'
+import { QueryParams } from 'src/app/models/query'
 
 @Injectable({
   providedIn: 'root'
@@ -14,26 +16,23 @@ export class RocketService {
   ) {
   }
 
-  getAll (): Observable<any> {
-    return this.http.get<any>(`${ BASE_URL_API }/rockets`)
-  }
-
-  get (): Observable<any> {
-    return this.http.post<any>(`${ BASE_URL_API }/rockets/query`, {
+  get (): Observable<Rocket[]> {
+    return this.http.post<QueryParams<Rocket>>(`${ BASE_URL_API }/rockets/query`, {
       options: {
-        limit: 5
+        limit: 5,
+        select: RocketProjection
       }
-    })
+    }).pipe(map(rocket => rocket.docs))
   }
 
-  getByName (query: string) {
-    return this.http.post<any>(`${ BASE_URL_API }/rockets/query`, {
+  getByName (query: string): Observable<Rocket[]> {
+    return this.http.post<QueryParams<Rocket>>(`${ BASE_URL_API }/rockets/query`, {
       query: {
         name: {
           $regex: query,
           $options: 'i'
         }
       }
-    })
+    }).pipe(map(rocket => rocket.docs))
   }
 }

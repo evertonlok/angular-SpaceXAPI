@@ -14,7 +14,7 @@ export class HistoryService {
   ) {
   }
 
-  getAll (): Observable<any> {
-    return this.http.get<History>(`${ BASE_URL_API }/history`)
+  getAll (): Observable<History[]> {
+    return this.http.get<History[]>(`${ BASE_URL_API }/history`)
   }
 }

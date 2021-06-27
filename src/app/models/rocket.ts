@@ -1,3 +1,8 @@
+import { QueryParams } from "./query"
+
+export const RocketProjection =
+  ['active', 'company', 'cost_per_launch', 'country', 'description', 'flickr_images', 'name', 'wikipedia']
+
 export type Rocket = {
    active: boolean,
    company: string,
@@ -8,3 +13,4 @@ export type Rocket = {
    name: string,
    wikipedia: string
 }
+

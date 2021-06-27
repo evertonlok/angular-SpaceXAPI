@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { BASE_URL_API } from 'src/app/constants'
-
-export type LaunchesType = "past" | "future"
-
+import { Launch, LaunchesType } from 'src/app/models/launch'
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +11,7 @@ export class LaunchService {
     private http: HttpClient
   ) { }
 
-  public get (type: LaunchesType = 'past'): Observable<any> {
-    return this.http.get(`${ BASE_URL_API }/launches/${ type === 'past' ? 'past' : 'upcoming' }`)
+  public get (type: LaunchesType = 'past'): Observable<Launch[]> {
+    return this.http.get<Launch[]>(`${ BASE_URL_API }/launches/${ type === 'past' ? 'past' : 'upcoming' }`)
   }
 }

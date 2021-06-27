@@ -1,6 +1,6 @@
 <h1 class="text-center">Detalhes sobre a carga útil</h1>
-<mat-spinner class="m-auto" *ngIf="!payloads$"></mat-spinner>
-<div class="mat-elevation-z4 py-2 px-4 my-5" *ngFor="let payload of payloads$">
+<mat-spinner class="m-auto" *ngIf="!payloads"></mat-spinner>
+<div class="mat-elevation-z4 py-2 px-4 my-5" *ngFor="let payload of payloads">
   <h2 class="text-center">{{ payload.name || 'Não informado'}}</h2>
   <div class="flex flex-wrap flex-grow gap-x-7">
     <div>

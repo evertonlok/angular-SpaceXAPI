@@ -10,7 +10,7 @@ import { HistoryService } from 'src/app/services/history/history.service'
 })
 export class HistoryEventsComponent implements OnInit {
   @ViewChild('wrapper') wrapper: ElementRef
-  public historialEvents$: any
+  public historialEvents: History[]
   private isDown = false
   private startX: number
   private scrollLeft: number
@@ -20,13 +20,13 @@ export class HistoryEventsComponent implements OnInit {
   ) { }
 
   ngOnInit (): void {
-    this.historyService.getAll().subscribe((historialEvents) => {
-      this.historialEvents$ = historialEvents
+    this.historyService.getAll().subscribe((historialEvents: History[]) => {
+      this.historialEvents = historialEvents
     })
   }
 
   ngAfterViewInit (): void {
-    this.wrapper.nativeElement.addEventListener('mousedown', (e: any) => {
+    this.wrapper.nativeElement.addEventListener('mousedown', (e: MouseEvent) => {
       this.isDown = true
       this.wrapper.nativeElement.classList.add('active')
       this.startX = e.pageX - this.wrapper.nativeElement.offsetLeft
@@ -43,7 +43,7 @@ export class HistoryEventsComponent implements OnInit {
       this.wrapper.nativeElement.classList.remove('active')
     })
 
-    this.wrapper.nativeElement.addEventListener('mousemove', (e: any) => {
+    this.wrapper.nativeElement.addEventListener('mousemove', (e: MouseEvent) => {
       if(!this.isDown) return
       e.preventDefault()
       const x = e.pageX - this.wrapper.nativeElement.offsetLeft

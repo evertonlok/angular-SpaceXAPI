@@ -2,16 +2,15 @@ import { Component, OnInit, ViewChild } from '@angular/core'
 import { MatPaginator } from '@angular/material/paginator'
 import { MatSort } from '@angular/material/sort'
 import { MatTableDataSource } from '@angular/material/table'
-import { Observable } from 'rxjs'
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { MatDialog } from '@angular/material/dialog'
 import { delay } from 'rxjs/operators'
 
 import { CrewDialogComponent } from './dialogs/crew/crew-dialog.component'
 
-import { LaunchesType, LaunchService } from '../services/launch/launch.service'
+import { LaunchService } from '../services/launch/launch.service'
 import { PayloadDialogComponent } from './dialogs/payload/payload-dialog.component'
-import { Data } from '../models/data'
 import { ComponentType } from '@angular/cdk/portal'
+import { Launch, LaunchesType } from '../models/launch'
 
 @Component({
   selector: 'app-home-page',
@@ -19,11 +18,10 @@ import { ComponentType } from '@angular/cdk/portal'
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent implements OnInit {
-  public launchType: LaunchesType = 'past'
-  private response: Observable<any>
+  public launchType: LaunchesType= 'past'
   public isLoadingResults = true;
   public displayedColumns: string[] = ['name', 'date', 'success', 'payload', 'crew'];
-  public dataSource: MatTableDataSource<Data>;
+  public dataSource: MatTableDataSource<Launch>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator
   @ViewChild(MatSort) sort: MatSort
@@ -31,8 +29,8 @@ export class HomePageComponent implements OnInit {
     private launchService: LaunchService,
     private dialog: MatDialog
   ) {
-    this.launchService.get().pipe(delay(1000)).subscribe(response => {
-      this.dataSource = new MatTableDataSource(response)
+    this.launchService.get().pipe(delay(1000)).subscribe((launches: Launch[]) => {
+      this.dataSource = new MatTableDataSource(launches)
       this.dataSource.paginator = this.paginator
       this.dataSource.sort = this.sort
       this.isLoadingResults = false
@@ -43,10 +41,10 @@ export class HomePageComponent implements OnInit {
 
   }
 
-  updateTable (e: any): void {
+  updateTable (): void {
     this.isLoadingResults = true
-    this.launchService.get(this.launchType).subscribe(response => {
-      this.dataSource = new MatTableDataSource(response)
+    this.launchService.get(this.launchType).subscribe((launches: Launch[]) => {
+      this.dataSource = new MatTableDataSource(launches)
       this.dataSource.paginator = this.paginator
       this.dataSource.sort = this.sort
       this.dataSource.paginator.firstPage()
@@ -54,10 +52,10 @@ export class HomePageComponent implements OnInit {
     })
   }
 
-  applyFilter (event: Event): void {
+  applyFilter (event: KeyboardEvent): void {
     const filterValue = (event.target as HTMLInputElement).value
     this.dataSource.filter = filterValue.trim().toLowerCase()
-    this.dataSource.filterPredicate = (data: Data, filter: string) => new RegExp(`${ filter }`, 'i').test(data.name)
+    this.dataSource.filterPredicate = (data: Launch, filter: string) => new RegExp(`${ filter }`, 'i').test(data.name)
 
     if(this.dataSource.paginator) {
       this.dataSource.paginator.firstPage()
