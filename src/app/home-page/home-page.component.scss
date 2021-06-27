@@ -1,5 +1,11 @@
 table {
   width: 100%;
+  tr th:first-child {
+    width: 50%;
+  }
+  tr th:not(th:first-child) {
+    width: 12.5%;
+  }
 }
 
 .loading-shade {

@@ -22,7 +22,7 @@ export class HomePageComponent implements OnInit {
   public launchType: LaunchesType = 'past'
   private response: Observable<any>
   public isLoadingResults = true;
-  public displayedColumns: string[] = ['date', 'success', 'payload', 'crew'];
+  public displayedColumns: string[] = ['name', 'date', 'success', 'payload', 'crew'];
   public dataSource: MatTableDataSource<Data>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator
@@ -37,14 +37,9 @@ export class HomePageComponent implements OnInit {
       this.dataSource.sort = this.sort
       this.isLoadingResults = false
     })
-
-
   }
 
   ngOnInit (): void {
-  }
-
-  ngAfterViewInit (): void {
 
   }
 
@@ -54,6 +49,7 @@ export class HomePageComponent implements OnInit {
       this.dataSource = new MatTableDataSource(response)
       this.dataSource.paginator = this.paginator
       this.dataSource.sort = this.sort
+      this.dataSource.paginator.firstPage()
       this.isLoadingResults = false
     })
   }
@@ -61,8 +57,9 @@ export class HomePageComponent implements OnInit {
   applyFilter (event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value
     this.dataSource.filter = filterValue.trim().toLowerCase()
+    this.dataSource.filterPredicate = (data: Data, filter: string) => new RegExp(`${ filter }`, 'i').test(data.name)
 
-    if (this.dataSource.paginator) {
+    if(this.dataSource.paginator) {
       this.dataSource.paginator.firstPage()
     }
   }
@@ -78,6 +75,4 @@ export class HomePageComponent implements OnInit {
       }
     )
   }
-
-
 }

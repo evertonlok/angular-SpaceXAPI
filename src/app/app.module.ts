@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { MatTableModule } from '@angular/material/table'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { MatPaginatorModule } from '@angular/material/paginator'
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator'
 import { MatInputModule } from '@angular/material/input'
 import { AppRoutingModule } from './app-routing.module'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -19,6 +19,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatSelectModule } from '@angular/material/select'
 import { MatButtonToggleModule } from '@angular/material/button-toggle'
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
+import { MatSortModule } from '@angular/material/sort'
+
+import { PtBrMatPaginatorIntl } from './i18n/table'
 
 // Components
 import { AppComponent } from './app.component'
@@ -56,9 +59,15 @@ import { RocketListComponent } from './home-page/rocket-list/rocket-list.compone
     MatProgressSpinnerModule,
     MatSelectModule,
     MatButtonToggleModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatSortModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MatPaginatorIntl,
+      useClass: PtBrMatPaginatorIntl
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
