@@ -1,6 +1,7 @@
+<h1 class="text-center">Detalhes sobre a carga útil</h1>
 <div class="mat-elevation-z4 p-5" *ngFor="let payload of payloads$">
   <h2 class="text-center">{{ payload.name || 'Não informado'}}</h2>
-  <div class="flex">
+  <div class="flex flex-wrap flex-grow gap-x-7">
     <div>
       <p>Clientes: {{ payload.customers.join(' ,') || 'Não informado' }}</p>
       <p>Fabricantes: {{ payload.manufacturers.join(' ,') || 'Não informado' }}</p>

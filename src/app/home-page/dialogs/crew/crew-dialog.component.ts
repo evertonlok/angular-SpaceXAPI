@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core'
 import { MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { Observable } from 'rxjs'
-import { Crew } from 'src/app/models/crew'
+import { Crew, CrewStatus } from 'src/app/models/crew'
 
 import { CrewService } from 'src/app/services/crew/crew.service'
 
@@ -14,7 +14,7 @@ export class CrewDialogComponent implements OnInit {
 
   public crews$: any
   constructor (
-    @Inject(MAT_DIALOG_DATA) public data: { ids: string[] },
+  @Inject(MAT_DIALOG_DATA) public data: { ids: string[] },
     private crewService: CrewService
   ) {
   }
@@ -23,6 +23,15 @@ export class CrewDialogComponent implements OnInit {
     this.crewService.findByIds(this.data.ids).subscribe(({ docs: crews }) => {
       this.crews$ = crews
     })
+  }
+
+  public getStatus (type: CrewStatus): string {
+    switch(type) {
+      case 'active': return 'Ativo'
+      case 'inactive': return 'Inativo'
+      case 'retired': return 'Aposentado'
+      default: return 'Desconhecido'
+    }
   }
 
 }

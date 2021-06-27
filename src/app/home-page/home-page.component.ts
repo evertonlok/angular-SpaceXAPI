@@ -73,7 +73,8 @@ export class HomePageComponent implements OnInit {
       {
         data: {
           ids
-        }
+        },
+        maxHeight: '90vh'
       }
     )
   }
