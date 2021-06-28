@@ -23,6 +23,10 @@ Or follow the steps below to run locally:
  
 - On the lower part of the page, there is a card that displays informations about a rocket, you can use the autocomplete input to search others.
 
+## Running ESLint
+
+Run `npm run eslint` on terminal.
+
 ## Running tests
 
 Run `npm run test` on terminal to execute the unit tests made with jasmine via [Karma](https://karma-runner.github.io).
