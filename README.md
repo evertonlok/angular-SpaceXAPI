@@ -1,27 +1,28 @@
 # AngularSpaceXAPI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.5.
+This application consumes the [SpaceX-API](https://github.com/r-spacex/SpaceX-API/blob/master/docs/v4/README.md) and display some informations on table and cards such as launches, crews, payloads, historical events and rockets.
 
-## Development server
+You can see the demo here:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+https://app-spacex-everton.netlify.app/
 
-## Code scaffolding
+Or follow the steps below to run locally:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1 - Install the dependencies with `npm run install`.
 
-## Build
+2 - Run `npm run serve` and open the browser on http://localhost:4200.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Overview
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+![Screen Shot 06-28-21 at 07 32 PM](https://user-images.githubusercontent.com/46136649/123712942-ba047a80-d849-11eb-994b-6268b9645ce6.PNG)
 
-## Running end-to-end tests
+- The table displays infos about the launches(past and upcoming), you can switch them by clicking on the buttons at the top right hand corner of the table. You can search a launch by its name.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Right below the table there is a section of historical events which can be dragged sideways.
+ 
+- On the lower part of the page, there is a card that displays informations about a rocket, you can use the autocomplete input to search others.
 
-## Further help
+## Running tests
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Run `npm run test` on terminal to execute the unit tests made with jasmine via [Karma](https://karma-runner.github.io).
