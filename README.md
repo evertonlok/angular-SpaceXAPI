@@ -8,9 +8,9 @@ https://app-spacex-everton.netlify.app/
 
 Or follow the steps below to run locally:
 
-1 - Install the dependencies with `npm run install`.
+1 - Install the dependencies with `npm install`.
 
-2 - Run `npm run serve` and open the browser on http://localhost:4200.
+2 - Run `npm run start` and open the browser on http://localhost:4200.
 
 
 ## Overview
