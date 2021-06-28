@@ -1,5 +1,15 @@
 @import '../../variables.scss';
 
+#container {
+  height: 90vh;
+}
+
+@media(min-width: $lg) and (orientation: landscape) {
+  #container {
+    height: 75vh;
+  }
+}
+
 table {
   width: 100%;
   tr th:first-child {

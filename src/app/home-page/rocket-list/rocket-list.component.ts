@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { FormControl } from '@angular/forms'
-import { debounceTime } from 'rxjs/operators'
+import { debounceTime, delay } from 'rxjs/operators'
 import { Rocket } from 'src/app/models/rocket'
 import { RocketService } from 'src/app/services/rocket/rocket.service'
 @Component({

@@ -9,10 +9,12 @@
 }
 
 html, body {
-  height: 100%;
+  width: 100vw;
+  background: #EFF6FF;
 }
 
 body {
    margin: 0;
+   overflow-x: hidden;
    font-family: Roboto, "Open Sans", sans-serif;
 }

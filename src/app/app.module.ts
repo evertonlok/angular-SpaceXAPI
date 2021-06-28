@@ -31,6 +31,7 @@ import { PayloadDialogComponent } from './home-page/dialogs/payload/payload-dial
 import { HistoryEventsComponent } from './home-page/history-events/history-events.component'
 import { RocketListComponent } from './home-page/rocket-list/rocket-list.component'
 import { CacheInterceptor } from './services/cache.interceptor'
+import { NotFoundComponent } from './not-found/not-found.component'
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CacheInterceptor } from './services/cache.interceptor'
     CrewDialogComponent,
     PayloadDialogComponent,
     HistoryEventsComponent,
-    RocketListComponent
+    RocketListComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
