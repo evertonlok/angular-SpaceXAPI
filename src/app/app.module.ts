@@ -2,7 +2,7 @@
 // Modules
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { MatTableModule } from '@angular/material/table'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
@@ -30,6 +30,7 @@ import { CrewDialogComponent } from './home-page/dialogs/crew/crew-dialog.compon
 import { PayloadDialogComponent } from './home-page/dialogs/payload/payload-dialog.component'
 import { HistoryEventsComponent } from './home-page/history-events/history-events.component'
 import { RocketListComponent } from './home-page/rocket-list/rocket-list.component'
+import { CacheInterceptor } from './services/cache.interceptor'
 
 @NgModule({
   declarations: [
@@ -66,6 +67,12 @@ import { RocketListComponent } from './home-page/rocket-list/rocket-list.compone
     {
       provide: MatPaginatorIntl,
       useClass: PtBrMatPaginatorIntl
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CacheInterceptor,
+      multi: true
+
     }
   ],
   bootstrap: [AppComponent]
