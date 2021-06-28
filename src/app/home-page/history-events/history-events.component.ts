@@ -1,5 +1,4 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core'
-import { Observable } from 'rxjs'
 import { History } from 'src/app/models/history'
 import { HistoryService } from 'src/app/services/history/history.service'
 
@@ -16,7 +15,7 @@ export class HistoryEventsComponent implements OnInit {
   private scrollLeft: number
 
   constructor (
-    private historyService: HistoryService
+    public historyService: HistoryService
   ) { }
 
   ngOnInit (): void {

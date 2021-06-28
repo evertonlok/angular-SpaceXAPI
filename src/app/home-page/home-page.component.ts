@@ -3,12 +3,11 @@ import { MatPaginator } from '@angular/material/paginator'
 import { MatSort } from '@angular/material/sort'
 import { MatTableDataSource } from '@angular/material/table'
 import { MatDialog } from '@angular/material/dialog'
-import { delay } from 'rxjs/operators'
 
 import { CrewDialogComponent } from './dialogs/crew/crew-dialog.component'
+import { PayloadDialogComponent } from './dialogs/payload/payload-dialog.component'
 
 import { LaunchService } from '../services/launch/launch.service'
-import { PayloadDialogComponent } from './dialogs/payload/payload-dialog.component'
 import { ComponentType } from '@angular/cdk/portal'
 import { Launch, LaunchesType } from '../models/launch'
 
@@ -29,16 +28,15 @@ export class HomePageComponent implements OnInit {
     private launchService: LaunchService,
     private dialog: MatDialog
   ) {
-    this.launchService.get().pipe(delay(1000)).subscribe((launches: Launch[]) => {
+  }
+
+  ngOnInit (): void {
+    this.launchService.get().subscribe((launches: Launch[]) => {
       this.dataSource = new MatTableDataSource(launches)
       this.dataSource.paginator = this.paginator
       this.dataSource.sort = this.sort
       this.isLoadingResults = false
     })
-  }
-
-  ngOnInit (): void {
-
   }
 
   updateTable (): void {

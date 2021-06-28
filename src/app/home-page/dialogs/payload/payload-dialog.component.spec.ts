@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog'
 
 import { PayloadDialogComponent } from './payload-dialog.component'
 
@@ -8,6 +10,11 @@ describe('PayloadDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        MatDialogModule,
+        HttpClientModule
+      ],
+      providers: [ { provide: MAT_DIALOG_DATA, useValue: {} } ],
       declarations: [ PayloadDialogComponent ]
     })
       .compileComponents()

@@ -1,9 +1,10 @@
 export const PayloadProjection =
-  ['name', 'customers', 'manufacturers', 'nationalities', 'orbit', 'type', 'mass_kg', 'mass_lbs',
+  ['id', 'name', 'customers', 'manufacturers', 'nationalities', 'orbit', 'type', 'mass_kg', 'mass_lbs',
     'reference_system', 'spanlife_years', 'inclination_deg', 'reused'
   ]
 
 export type Payload = {
+  id: string,
   name: string,
   customers: string[],
   manufacturers: string[],
