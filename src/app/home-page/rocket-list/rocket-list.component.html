@@ -1,39 +1,149 @@
-<h1 class="text-center mt-5 mb-3">Foguetes</h1>
-<form>
-  <mat-form-field class="mx-auto w-3/5 lg:w-2/5 xl:w-2/12 block" appearance="outline">
-    <mat-label>Nome</mat-label>
-    <input type="text"
-           #input
-           placeholder="Pesquise..."
-           aria-label="Nome"
-           matInput
-           [formControl]="rocketControl"
-           [matAutocomplete]="auto">
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-      <mat-option (onSelectionChange)="applyFilter(rocket)" *ngFor="let rocket of filteredRockets">
-        {{ rocket.name }}
-      </mat-option>
-      <mat-option *ngIf="!filteredRockets?.length">
-        Nenhum resultado
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
-</form>
+<section>
+  <h1 class="title text-center">Rockets</h1>
 
-<mat-spinner class="m-auto" *ngIf="isLoadingResult"></mat-spinner>
-<div *ngIf="rocket" class="flex gap-x-5 justify-center mb-3">
-  <mat-card class="mat-elevation-10 bg-gray-50 p-0 bg-blue-300">
-    <mat-card-content >
-      <img [src]="rocket.flickr_images[0]" alt="Photo of a rocket">
-      <div class="rocket-description p-5">
-        <mat-card-title class="text-center">{{ rocket.name }}</mat-card-title>
-        <mat-card-subtitle class="text-center">{{ rocket.company }}</mat-card-subtitle>
-        <p class="text-center"><span class="font-bold">Custo por lançamento:</span> {{ rocket.cost_per_launch | currency }}</p>
-        <p class="text-center"><span class="font-bold">Cidade:</span> {{ rocket.country }}</p>
-        <a mat-raised-button class="w-full mt-5 mx-auto block hover:bg-blue-50 bg-gray-200" [href]="rocket.wikipedia" target="_blank">
-          <mat-icon class="mr-2" aria-hidden="false">menu_book</mat-icon> <span>Artigo</span>
-        </a>
-      </div>
-    </mat-card-content>
-  </mat-card>
-</div>
+  <!-- <form>
+    <mat-form-field class="mx-auto w-3/5 lg:w-2/5 xl:w-2/12 block" appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input type="text"
+             #input
+             placeholder="Pesquise..."
+             aria-label="Nome"
+             matInput
+             [formControl]="rocketControl"
+             [matAutocomplete]="auto">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option (onSelectionChange)="applyFilter(rocket)" *ngFor="let rocket of filteredRockets">
+          {{ rocket.name }}
+        </mat-option>
+        <mat-option *ngIf="!filteredRockets?.length">
+          Nenhum resultado
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form> -->
+
+  <!-- <mat-spinner class="m-auto" *ngIf="isLoadingResult"></mat-spinner> -->
+
+  <div class="rockets flex gap-x-5">
+    <!-- <div *ngIf="true || rocket" class="flex gap-x-5 justify-center mb-3">
+      <mat-card class="p-0">
+        <mat-card-content >
+          <img [src]="rocket.flickr_images[0]" alt="Photo of a rocket">
+          <div class="rocket-description p-5">
+            <mat-card-title class="text-center">{{ rocket.name }}</mat-card-title>
+            <mat-card-subtitle class="text-center">{{ rocket.company }}</mat-card-subtitle>
+            <p class="text-center"><span class="font-bold">Custo por lançamento:</span> {{ rocket.cost_per_launch | currency }}</p>
+            <p class="text-center"><span class="font-bold">Cidade:</span> {{ rocket.country }}</p>
+            <a mat-raised-button class="w-full mt-5 mx-auto block hover:bg-blue-50 bg-gray-200" [href]="rocket.wikipedia" target="_blank">
+              <mat-icon class="mr-2" aria-hidden="false">menu_book</mat-icon> <span>Artigo</span>
+            </a>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div> -->
+
+
+    <div *ngIf="true || rocket" class="flex gap-x-5 justify-center mb-3">
+      <mat-card class="rocket p-0">
+        <mat-card-content>
+          <img class="rocket__image" [src]="rocket.flickr_images[0]" alt="Photo of a rocket">
+          <div class="rocket__backdrop">
+            <div class="rocket-description p-5">
+              <mat-card-title class="rocket__title text-center">{{ rocket.name }}</mat-card-title>
+              <mat-card-subtitle class="rocket__subtitle text-center">{{ rocket.company }}</mat-card-subtitle>
+              <p class="rocket__cost text-center"><span class="font-bold">Custo por lançamento:</span> {{ rocket.cost_per_launch | currency }}</p>
+              <p class="rocket__country text-center"><span class="font-bold">Cidade:</span> {{ rocket.country }}</p>
+              <a mat-raised-button class="rocket__link" [href]="rocket.wikipedia" target="_blank">
+                <span>Read article</span>
+              </a>
+            </div>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div *ngIf="true || rocket" class="flex gap-x-5 justify-center mb-3">
+      <mat-card class="rocket p-0">
+        <mat-card-content>
+          <img class="rocket__image" [src]="rocket.flickr_images[0]" alt="Photo of a rocket">
+          <div class="rocket__backdrop">
+            <div class="rocket-description p-5">
+              <mat-card-title class="rocket__title text-center">{{ rocket.name }}</mat-card-title>
+              <mat-card-subtitle class="rocket__subtitle text-center">{{ rocket.company }}</mat-card-subtitle>
+              <p class="rocket__cost text-center"><span class="font-bold">Custo por lançamento:</span> {{ rocket.cost_per_launch | currency }}</p>
+              <p class="rocket__country text-center"><span class="font-bold">Cidade:</span> {{ rocket.country }}</p>
+              <a mat-raised-button class="rocket__link" [href]="rocket.wikipedia" target="_blank">
+                <span>Read article</span>
+              </a>
+            </div>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div *ngIf="true || rocket" class="flex gap-x-5 justify-center mb-3">
+      <mat-card class="rocket p-0">
+        <mat-card-content>
+          <img class="rocket__image" [src]="rocket.flickr_images[0]" alt="Photo of a rocket">
+          <div class="rocket__backdrop">
+            <div class="rocket-description p-5">
+              <mat-card-title class="rocket__title text-center">{{ rocket.name }}</mat-card-title>
+              <mat-card-subtitle class="rocket__subtitle text-center">{{ rocket.company }}</mat-card-subtitle>
+              <p class="rocket__cost text-center"><span class="font-bold">Custo por lançamento:</span> {{ rocket.cost_per_launch | currency }}</p>
+              <p class="rocket__country text-center"><span class="font-bold">Cidade:</span> {{ rocket.country }}</p>
+              <a mat-raised-button class="rocket__link" [href]="rocket.wikipedia" target="_blank">
+                <span>Read article</span>
+              </a>
+            </div>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div *ngIf="true || rocket" class="flex gap-x-5 justify-center mb-3">
+      <mat-card class="rocket p-0">
+        <mat-card-content>
+          <img class="rocket__image" [src]="rocket.flickr_images[0]" alt="Photo of a rocket">
+          <div class="rocket__backdrop">
+            <div class="rocket-description p-5">
+              <mat-card-title class="rocket__title text-center">{{ rocket.name }}</mat-card-title>
+              <mat-card-subtitle class="rocket__subtitle text-center">{{ rocket.company }}</mat-card-subtitle>
+              <p class="rocket__cost text-center"><span class="font-bold">Custo por lançamento:</span> {{ rocket.cost_per_launch | currency }}</p>
+              <p class="rocket__country text-center"><span class="font-bold">Cidade:</span> {{ rocket.country }}</p>
+              <a mat-raised-button class="rocket__link" [href]="rocket.wikipedia" target="_blank">
+                <span>Read article</span>
+              </a>
+            </div>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div *ngIf="true || rocket" class="flex gap-x-5 justify-center mb-3">
+      <mat-card class="rocket p-0">
+        <mat-card-content>
+          <img class="rocket__image" [src]="rocket.flickr_images[0]" alt="Photo of a rocket">
+          <div class="rocket__backdrop">
+            <div class="rocket-description p-5">
+              <mat-card-title class="rocket__title text-center">{{ rocket.name }}</mat-card-title>
+              <mat-card-subtitle class="rocket__subtitle text-center">{{ rocket.company }}</mat-card-subtitle>
+              <p class="rocket__cost text-center"><span class="font-bold">Custo por lançamento:</span> {{ rocket.cost_per_launch | currency }}</p>
+              <p class="rocket__country text-center"><span class="font-bold">Cidade:</span> {{ rocket.country }}</p>
+              <a mat-raised-button class="rocket__link" [href]="rocket.wikipedia" target="_blank">
+                <span>Read article</span>
+              </a>
+            </div>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+
+
+  </div>
+</section>

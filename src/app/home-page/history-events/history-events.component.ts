@@ -20,6 +20,7 @@ export class HistoryEventsComponent implements OnInit {
 
   ngOnInit (): void {
     this.historyService.getAll().subscribe((historialEvents: History[]) => {
+      // this.historialEvents = [historialEvents.pop()]
       this.historialEvents = historialEvents
     })
   }

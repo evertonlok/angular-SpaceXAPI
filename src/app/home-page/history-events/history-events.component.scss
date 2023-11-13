@@ -1,21 +1,60 @@
 @import '../../../variables.scss';
-
-mat-card {
-  width: 100%;
-  flex-grow: 1;
-  flex-shrink: 0;
-  margin-right: 10px;
-  margin-left: 10px;
+section {
+  padding-inline: 20px;
 }
 
-@media(min-width: $sm) {
-  mat-card {
-    min-width: 500px;
-    max-width: 600px;
-    margin-right: 20px;
-    margin-left: 20px;
+.title {
+  color: white;
+  margin-bottom: 50px;
+  font-size: 40px;
+}
+
+.histories {
+  gap: 30px;
+}
+
+.history {
+  font-family: $primary-font;
+  max-width: 500px;
+  border-radius: 0;
+  //border: 3px solid #D8315B;
+  flex-shrink: 0;
+
+  &__title {
+    font-size: 25px;
+  }
+
+  &__description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__link {
+    margin-top: auto;
+    background-color: #D8315B;
+    color: white;
   }
 }
+
+// mat-card {
+//   width: 100%;
+//   flex-grow: 1;
+//   flex-shrink: 0;
+//   margin-right: 10px;
+//   margin-left: 10px;
+// }
+
+// @media(min-width: $sm) {
+//   mat-card {
+//     min-width: 500px;
+//     max-width: 600px;
+//     margin-right: 20px;
+//     margin-left: 20px;
+//   }
+// }
 
 #wrapper::-webkit-scrollbar {
   display: none;
@@ -29,16 +68,7 @@ mat-card {
 }
 
 #wrapper.active {
-  background: rgba(255,255,255,0.3);
   cursor: grabbing;
   cursor: -webkit-grabbing;
   transform: scale(1);
-}
-
-.description {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }

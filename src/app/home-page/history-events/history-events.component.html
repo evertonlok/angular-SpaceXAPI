@@ -1,11 +1,13 @@
-<h1 class="text-center mt-4">Eventos históricos</h1>
-<div #wrapper id="wrapper" class="flex flex-initial flex-nowrap overflow-auto py-5 w-full">
-    <mat-card class="flex flex-col bg-blue-200" *ngFor="let historicalEvent of historialEvents">
-      <h1 class="text-center">{{ historicalEvent.title }}</h1>
-      <h3 class="text-center">{{ historicalEvent.event_date_utc | date: 'dd/MM/yyyy' }}</h3>
-      <p class="w-full description text-base tracking-wide">{{ historicalEvent.details }} </p>
-      <a mat-raised-button class="w-4/12 mx-auto block hover:bg-blue-200 mt-auto bg-gray-200" [href]="historicalEvent.links.article" target="_blank">
-        <mat-icon class="mr-2" aria-hidden="false">menu_book</mat-icon> <span>Artigo</span>
-      </a>
-    </mat-card>
-</div>
+<section>
+  <h1 class="title text-center">Historical Events</h1>
+  <div #wrapper id="wrapper" class="histories flex flex-initial flex-nowrap overflow-auto py-5 w-full">
+      <mat-card class="history flex flex-col" *ngFor="let historicalEvent of historialEvents">
+        <h1 class="history__title text-center">{{ historicalEvent.title }}</h1>
+        <p class="history__date text-center mt-4">{{ historicalEvent.event_date_utc | date: 'dd/MM/yyyy' }}</p>
+        <p class="history__description w-full my-4">{{ historicalEvent.details }} </p>
+        <a mat-raised-button class="history__link block" [href]="historicalEvent.links.article" target="_blank">
+          <span>Read article</span>
+        </a>
+      </mat-card>
+  </div>
+</section>

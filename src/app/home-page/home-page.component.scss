@@ -1,14 +1,15 @@
 @import '../../variables.scss';
 
-#container {
-  height: 90vh;
+.title {
+  text-align: center;
+  color: white;
+  font-size: 6rem;
+  margin-block: 100px;
 }
 
-@media(min-width: $lg) and (orientation: landscape) {
-  #container {
-    height: 75vh;
-  }
-}
+
+
+
 
 table {
   width: 100%;
