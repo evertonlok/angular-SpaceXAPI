@@ -11,7 +11,7 @@ import { CrewService } from 'src/app/services/crew/crew.service'
 })
 export class CrewDialogComponent implements OnInit {
 
-  public crews: Crew[]
+  public crew: Crew[]
   constructor (
   @Inject(MAT_DIALOG_DATA) public data: { ids: string[] },
     private crewService: CrewService
@@ -19,17 +19,17 @@ export class CrewDialogComponent implements OnInit {
   }
 
   ngOnInit (): void {
-    this.crewService.findByIds(this.data.ids).subscribe((crews: Crew[]) => {
-      this.crews = crews
+    this.crewService.findByIds(this.data.ids).subscribe((crew: Crew[]) => {
+      this.crew = crew
     })
   }
 
   public getStatus (type: CrewStatus): string {
     switch(type) {
-      case 'active': return 'Ativo'
-      case 'inactive': return 'Inativo'
-      case 'retired': return 'Aposentado'
-      default: return 'Desconhecido'
+      case 'active': return 'Active'
+      case 'inactive': return 'Inactive'
+      case 'retired': return 'Retired'
+      default: return 'Unknown'
     }
   }
 

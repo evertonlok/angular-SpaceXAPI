@@ -1,0 +1,98 @@
+@import '../../../variables.scss';
+section {
+  max-width: 1000px;
+  margin: auto;
+  position: relative;
+  padding: 20px;
+}
+
+.title {
+  color: white;
+  margin-block: 50px;
+  font-size: 40px;
+}
+
+.launches {
+  &__table {
+    width: 100%;
+    min-height: 550px;
+    font-family: $primary-font;
+
+    tr th:first-child {
+      width: 50%;
+    }
+
+    tr th:not(th:first-child) {
+      width: 12.5%;
+      text-align: center;
+    }
+
+    tr td:not(td:first-child) {
+      text-align: center;
+    }
+  }
+
+  &__filter {
+    width: 100%;
+    padding: 0 !important;
+    margin-right: 25px !important;
+    font-family: $primary-font;
+
+    ::ng-deep {
+      .mat-form-field-underline {
+        background-color: white;
+      }
+
+      .mat-form-field-label {
+        color: white;
+      }
+
+      input {
+        color: white;
+      }
+    }
+  }
+
+  &__types {
+    border-radius: 0;
+    margin: 0 !important;
+    flex-basis: 250px;
+  }
+
+  &__type {
+    width: 90px;
+    font-family: $primary-font;
+
+    &.mat-button-toggle-checked {
+      color: white;
+      background-color: #0A2463;
+    }
+  }
+
+  &__no-result {
+    display: block;
+    text-align: center;
+    font-size: 30px;
+  }
+}
+
+.loading-shade {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: $sm) {
+  .launches {
+    &__table {
+      tr th:first-child {
+        width: 25%;
+      }
+    }
+  }
+}

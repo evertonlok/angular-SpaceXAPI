@@ -9,12 +9,16 @@
 }
 
 html, body {
-  // width: 100vw;
   background: #1E1B18;
 }
 
 body {
-   margin: 0;
-   overflow-x: hidden;
-   font-family: 'Andika', sans-serif;
+  position: relative;
+  margin: 0;
+  overflow-x: hidden;
+  font-family: 'Andika', sans-serif;
+}
+
+.mat-dialog-container {
+  border-radius: 0 !important;
 }

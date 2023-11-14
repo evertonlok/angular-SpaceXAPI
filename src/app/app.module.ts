@@ -32,6 +32,8 @@ import { HistoryEventsComponent } from './home-page/history-events/history-event
 import { RocketListComponent } from './home-page/rocket-list/rocket-list.component'
 import { CacheInterceptor } from './services/cache.interceptor'
 import { NotFoundComponent } from './not-found/not-found.component'
+import { ShowcaseDirective } from './directives/showcase/showcase.directive';
+import { LaunchesTableComponent } from './home-page/launches-table/launches-table.component'
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { NotFoundComponent } from './not-found/not-found.component'
     PayloadDialogComponent,
     HistoryEventsComponent,
     RocketListComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ShowcaseDirective,
+    LaunchesTableComponent
   ],
   imports: [
     BrowserModule,
@@ -66,10 +70,6 @@ import { NotFoundComponent } from './not-found/not-found.component'
     MatSortModule,
   ],
   providers: [
-    {
-      provide: MatPaginatorIntl,
-      useClass: PtBrMatPaginatorIntl
-    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: CacheInterceptor,

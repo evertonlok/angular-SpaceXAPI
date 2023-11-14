@@ -1,5 +1,9 @@
 @import '../../../../variables.scss';
 
+.title {
+  font-size: 30px;
+}
+
 a {
   width: 100% !important;
   word-wrap: break-word;
@@ -12,9 +16,30 @@ img {
   object-position: top;
 }
 
-mat-icon {
-  margin-right: 10px;
-  margin-bottom: 5px;
+.member{
+  font-family: $primary-font;
+  max-width: 500px;
+  border-radius: 0;
+  user-select: none;
+  flex-shrink: 0;
+
+  &__title {
+    font-size: 25px;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__link {
+    margin-top: auto;
+    margin-inline: auto;
+    width: 150px;
+    background-color: #0A2463;
+    color: white;
+  }
 }
 
 

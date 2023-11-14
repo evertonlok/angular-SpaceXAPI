@@ -1,23 +1,25 @@
-<h1 class="text-center">Detalhes sobre a carga útil</h1>
-<mat-spinner class="m-auto" *ngIf="!payloads"></mat-spinner>
-<div class="mat-elevation-z4 py-2 px-4 my-5" *ngFor="let payload of payloads">
-  <h2 class="text-center">{{ payload.name || 'Não informado'}}</h2>
-  <div class="flex flex-wrap flex-grow gap-x-7">
-    <div>
-      <p>Clientes: {{ payload.customers.join(' ,') || 'Não informado' }}</p>
-      <p>Fabricantes: {{ payload.manufacturers.join(' ,') || 'Não informado' }}</p>
-      <p>Nacionalidades: {{ payload.nationalities.join(' ,') || 'Não informado' }}</p>
-      <p>Órbita: {{ payload.orbit || 'Não informado' }}</p>
-      <p>Tipo: {{ payload.type || 'Não informado' }}</p>
-      <p>Massa (KG): {{ payload.mass_kg || 'Não informado' }}</p>
-    </div>
+<section>
+  <h1 class="title text-center">Payload Details</h1>
+  <mat-spinner class="m-auto" *ngIf="!payloads"></mat-spinner>
+  <div class="mat-elevation-z4 py-2 px-4 my-5" *ngFor="let payload of payloads">
+    <h2 class="payload__name text-center">{{ payload.name || 'Not provided'}}</h2>
+    <div class="flex flex-wrap flex-grow gap-x-7">
+      <div>
+        <p>Customers: {{ payload.customers.join(' ,') || 'Not provided' }}</p>
+        <p>Manufacturers: {{ payload.manufacturers.join(' ,') || 'Not provided' }}</p>
+        <p>Nationalities: {{ payload.nationalities.join(' ,') || 'Not provided' }}</p>
+        <p>Orbit: {{ payload.orbit || 'Not provided' }}</p>
+        <p>Type: {{ payload.type || 'Not provided' }}</p>
+        <p>Mass (KG): {{ payload.mass_kg || 'Not provided' }}</p>
+      </div>
 
-    <div>
-      <p>Massa (LBS): {{ payload.mass_lbs || 'Não informado' }}</p>
-      <p>Sistema de referência: {{ (payload.reference_system | uppercase) || 'Não informado' }}</p>
-      <p>Vida útil em anos: {{ payload.spanlife_years || 'Não informado' }}</p>
-      <p>Inclinação: {{ payload.inclination_deg || 'Não informado' }}</p>
-      <p>Reutilizado: {{ (payload.reused ? 'Sim' : 'Não') || 'Não informado' }}</p>
+      <div>
+        <p>Mass (LBS): {{ payload.mass_lbs || 'Not provided' }}</p>
+        <p>Reference system: {{ (payload.reference_system | uppercase) || 'Not provided' }}</p>
+        <p>Span life (years): {{ payload.spanlife_years || 'Not provided' }}</p>
+        <p>Inclination: {{ payload.inclination_deg || 'Not provided' }}</p>
+        <p>Reused: {{ (payload.reused ? 'Sim' : 'Não') || 'Not provided' }}</p>
+      </div>
     </div>
   </div>
-</div>
+</section>

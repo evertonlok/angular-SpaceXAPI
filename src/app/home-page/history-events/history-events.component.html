@@ -1,6 +1,6 @@
 <section>
   <h1 class="title text-center">Historical Events</h1>
-  <div #wrapper id="wrapper" class="histories flex flex-initial flex-nowrap overflow-auto py-5 w-full">
+  <div appShowcase id="wrapper" class="histories flex flex-initial flex-nowrap overflow-auto py-5 w-full">
       <mat-card class="history flex flex-col" *ngFor="let historicalEvent of historialEvents">
         <h1 class="history__title text-center">{{ historicalEvent.title }}</h1>
         <p class="history__date text-center mt-4">{{ historicalEvent.event_date_utc | date: 'dd/MM/yyyy' }}</p>

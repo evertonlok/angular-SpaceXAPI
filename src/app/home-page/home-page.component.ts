@@ -17,58 +17,9 @@ import { Launch, LaunchesType } from '../models/launch'
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent implements OnInit {
-  public launchType: LaunchesType= 'past'
-  public isLoadingResults = true;
-  public displayedColumns: string[] = ['name', 'date', 'success', 'payload', 'crew'];
-  public dataSource: MatTableDataSource<Launch>;
-
-  @ViewChild(MatPaginator) paginator: MatPaginator
-  @ViewChild(MatSort) sort: MatSort
-  constructor (
-    private launchService: LaunchService,
-    private dialog: MatDialog
-  ) {
-  }
+  constructor () {}
 
   ngOnInit (): void {
-    this.launchService.get().subscribe((launches: Launch[]) => {
-      this.dataSource = new MatTableDataSource(launches)
-      this.dataSource.paginator = this.paginator
-      this.dataSource.sort = this.sort
-      this.isLoadingResults = false
-    })
-  }
 
-  updateTable (): void {
-    this.isLoadingResults = true
-    this.launchService.get(this.launchType).subscribe((launches: Launch[]) => {
-      this.dataSource = new MatTableDataSource(launches)
-      this.dataSource.paginator = this.paginator
-      this.dataSource.sort = this.sort
-      this.dataSource.paginator.firstPage()
-      this.isLoadingResults = false
-    })
-  }
-
-  applyFilter (event: KeyboardEvent): void {
-    const filterValue = (event.target as HTMLInputElement).value
-    this.dataSource.filter = filterValue.trim().toLowerCase()
-    this.dataSource.filterPredicate = (data: Launch, filter: string) => new RegExp(`${ filter }`, 'i').test(data.name)
-
-    if(this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage()
-    }
-  }
-
-  openDialogInfo (type: "crew" | "payloads", ids: string[]): void {
-    this.dialog.open(
-      type === "crew" ? CrewDialogComponent : PayloadDialogComponent as ComponentType<CrewDialogComponent | PayloadDialogComponent>,
-      {
-        data: {
-          ids
-        },
-        maxHeight: '90vh'
-      }
-    )
   }
 }
