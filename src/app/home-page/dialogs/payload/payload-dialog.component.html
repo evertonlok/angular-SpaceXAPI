@@ -18,7 +18,7 @@
         <p>Reference system: {{ (payload.reference_system | uppercase) || 'Not provided' }}</p>
         <p>Span life (years): {{ payload.spanlife_years || 'Not provided' }}</p>
         <p>Inclination: {{ payload.inclination_deg || 'Not provided' }}</p>
-        <p>Reused: {{ (payload.reused ? 'Sim' : 'Não') || 'Not provided' }}</p>
+        <p>Reused: {{ (payload.reused ? 'Yes' : 'No') || 'Not provided' }}</p>
       </div>
     </div>
   </div>

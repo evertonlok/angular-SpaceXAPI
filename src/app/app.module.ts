@@ -13,12 +13,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatButtonModule } from '@angular/material/button'
 import { MatCardModule } from '@angular/material/card'
-import { MatBadgeModule } from '@angular/material/badge'
 import { MatIconModule } from '@angular/material/icon'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
-import { MatSelectModule } from '@angular/material/select'
 import { MatButtonToggleModule } from '@angular/material/button-toggle'
-import { MatAutocompleteModule } from '@angular/material/autocomplete'
 import { MatSortModule } from '@angular/material/sort'
 
 import { PtBrMatPaginatorIntl } from './i18n/table'
@@ -61,12 +58,9 @@ import { LaunchesTableComponent } from './home-page/launches-table/launches-tabl
     MatDialogModule,
     MatButtonModule,
     MatCardModule,
-    MatBadgeModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    MatSelectModule,
     MatButtonToggleModule,
-    MatAutocompleteModule,
     MatSortModule,
   ],
   providers: [
